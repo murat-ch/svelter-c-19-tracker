@@ -33,3 +33,4 @@
 <h1>{state}</h1>
 <CovidStat />
 <CovidChart />
+2.34
