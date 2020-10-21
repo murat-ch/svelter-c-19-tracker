@@ -5,7 +5,9 @@
         try {
             const usStats = await request.usStat();
             return { usStats };
-        } catch (e) {}
+        } catch (e) {
+            this.error(500, "Something went wrong. Please try again later");
+        }
     }
 </script>
 <script>
@@ -13,7 +15,6 @@
     import CovidChart from '../components/CovidChart.svelte';
     import TableContainer from '../components/TableContainer.svelte';
     export let usStats;
-    console.log(usStats, 'usStats');
 </script>
 
 <svelte:head>
@@ -27,6 +28,6 @@
 </div>
 
 
-<CovidStat />
+<CovidStat {...usStats}/>
 <CovidChart />
 <TableContainer />
