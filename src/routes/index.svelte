@@ -1,8 +1,19 @@
+<script context="module">
+    import request from "../data/request";
+
+    export async function preload() {
+        try {
+            const usStats = await request.usStat();
+            return { usStats };
+        } catch (e) {}
+    }
+</script>
 <script>
     import CovidStat from '../components/CovidStat.svelte';
     import CovidChart from '../components/CovidChart.svelte';
     import TableContainer from '../components/TableContainer.svelte';
-
+    export let usStats;
+    console.log(usStats, 'usStats');
 </script>
 
 <svelte:head>

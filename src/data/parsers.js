@@ -1,4 +1,5 @@
 import format from "./format";
+import moment from 'moment';
 function usStats(data) {
     const [usStatRaw] = data;
     return {
@@ -9,7 +10,7 @@ function usStats(data) {
         hospitalized: format.number(usStatRaw.hospitalized),
         icu: format.number(usStatRaw.inIcuCurrently),
         tested: format.number(usStatRaw.totalTestResults),
-        updated: format.number(usStatRaw.lastModified)
+        updated: moment(usStatRaw.lastModified).format('LLLL')
     }
 }
 
