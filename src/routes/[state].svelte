@@ -37,4 +37,4 @@
 <CovidStat {...stats}/>
 <CovidChart />
 
-//TODO: video 2.44.47
+<!--TODO: video 2.44.47-->
