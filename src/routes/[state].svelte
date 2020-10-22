@@ -1,5 +1,7 @@
 <script context="module">
     import stateNames from "../data/stateNames";
+    import request from "../data/request";
+
 
     export async function preload(page) {
         const state = page.params["state"];
@@ -8,7 +10,8 @@
             return ;
         }
         try {
-            return { state: page.params['state'] }
+            const stats = await request.stateStats(state);
+            return { state, stats}
         }catch (e) {
             this.error(500, "Something went wrong. Please try again later");
         }
@@ -17,8 +20,8 @@
 <script>
     import CovidStat from '../components/CovidStat.svelte';
     import CovidChart from '../components/CovidChart.svelte';
-
     export let state;
+    export let stats;
 </script>
 <svelte:head>
     <title>Covid-19 - {state}</title>
@@ -31,6 +34,7 @@
 </div>
 
 <h1>{state}</h1>
-<CovidStat />
+<CovidStat {...stats}/>
 <CovidChart />
-2.34
+
+//TODO: video 2.44.47
